@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import '../css/Table.css';
 import Square from './Square';
