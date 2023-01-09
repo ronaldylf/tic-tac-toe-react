@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import React from 'react';
 import '../css/Table.css';
 import Square from './Square';
@@ -8,11 +9,13 @@ export default function Table(props) {
         return (
             <Square
             id_={i}
+            onClick={() => props.handleClick(i)}
+            status={props.squares[i]}
             />
         )
     }
 
-    return( 
+    return(
     <>
     <div className='board-row'>
         {renderSquare(0)}
