@@ -35,6 +35,7 @@ export default function Game() {
         
 
         let possible_winner = null;
+        let num_nonwinner_lines = 0;
         for (let i=0; i<possible_lines.length; i++) {
             const line = possible_lines[i];
             const [a, b, c] = [new_squares[line[0]], new_squares[line[1]], new_squares[line[2]]];
@@ -44,18 +45,24 @@ export default function Game() {
             } else if (a==="O" && b==="O" && c==="O") {
                 possible_winner = "O";
                 break;
+            } else if (a && b && c) {
+                num_nonwinner_lines += 1;
             }
         }
         
-        const status = (possible_winner) ? `Winner: ${possible_winner}` : `Next player: ${next_player}`;
+        // if all the possible lines are filled and have no winner, so it's a draw
+        possible_winner = (num_nonwinner_lines === possible_lines.length) ? "draw" : possible_winner;
+
+        let status = (possible_winner) ? `Winner: ${possible_winner}` : `Next player: ${next_player}`;
+        status = (possible_winner === "draw") ? "Draw!" : status; // a different status for draw
         setStatus(status); // update status
         setWinner(possible_winner); // update winner
     }
 
     return(
-    <>
-    <h1 className='status'>{status}</h1>
-    <Table handleClick={handleClick} squares={squares}/>
-    </>
+    <div className='game-container'>
+        <h1 className='status'>{status}</h1>
+        <Table handleClick={handleClick} squares={squares}/>
+    </div>
     )
 }
