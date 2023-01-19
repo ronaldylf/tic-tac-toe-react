@@ -1,6 +1,7 @@
 import React from 'react';
 import Table from './Table';
 import { useState } from 'react';
+import '../css/Game.css';
 
 export default function Game() {
     const [squares, setSquares] = useState(Array(9).fill(null));
@@ -62,7 +63,8 @@ export default function Game() {
     return(
     <div className='game-container'>
         <h1 className='status'>{status}</h1>
-        <Table handleClick={handleClick} squares={squares}/>
+        <br/>
+        <Table className='game-table' handleClick={handleClick} squares={squares}/>
     </div>
     )
 }
