@@ -1,3 +1,9 @@
+.table {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
 .board-row:after {
     clear: both;
     content: "";
