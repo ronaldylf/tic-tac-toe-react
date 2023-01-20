@@ -3,10 +3,15 @@ import Table from './Table';
 import { useState } from 'react';
 import '../css/Game.css';
 
+function restartGame() {
+    console.log("restarting...")
+    window.location.reload()
+}
+
 export default function Game() {
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [isXtime, setisXTime] = useState(true);
-    const [status, setStatus] = useState("Start some game");
+    const [status, setStatus] = useState("Next player: X");
     const [winner, setWinner] = useState(null);
 
     function handleClick(id_) {
@@ -62,9 +67,9 @@ export default function Game() {
 
     return(
     <div className='game-container'>
-        <h1 className='status'>{status}</h1>
-        <br/>
+        <h2 className='status'>{status}</h2>
         <Table className='game-table' handleClick={handleClick} squares={squares}/>
+        <button className='restart-button' onClick={() => restartGame()}>Restart</button>
     </div>
     )
 }
