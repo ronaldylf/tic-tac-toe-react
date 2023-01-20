@@ -1,0 +1,12 @@
+body {
+    background-color: rgba(90, 81, 81, 0.815);
+}
+
+.main-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+    color: white;
+    margin-top: 2%;
+}
